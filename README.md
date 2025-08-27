@@ -202,14 +202,14 @@ Based on comprehensive testing, the **Ensemble Bagging** algorithm demonstrated 
 
 The Ensemble Bagging approach combines multiple base estimators to improve generalization and reduce overfitting, making it particularly effective for medical prediction tasks where accuracy is critical.
 
-## 📸 Screenshots
-# Homepage
+# 📸 Screenshots
+## Homepage
 ![Home Page](screenshots/home.png)
-# Prediction Page
-![Prediction Page](screenshots/predict1.png)
-# User Input
-![Prediction Page](screenshots/predict2.png)
-# Result
+## Prediction Page
+<!-- ![Prediction Page](screenshots/predict1.png) -->
+### User Input
+![Prediction Page](screenshots/predict5.png)
+### Results
 ![Prediction Page](screenshots/predict4.png)
 ![Prediction Page](screenshots/predict3.png)
 

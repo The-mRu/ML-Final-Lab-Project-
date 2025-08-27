@@ -9,7 +9,8 @@
         </div>
         <div class="card-body p-4">
           <p class="text-muted mb-4">Please provide the following health information for analysis. All fields are required.</p>
-          
+          {% comment %} 
+
           <form method="post" class="needs-validation" novalidate>
             {% csrf_token %}
             
@@ -34,7 +35,134 @@
               <a href="{% url 'homepage' %}" class="btn btn-outline-secondary btn-lg ms-2">Cancel</a>
             </div>
           </form>
-          
+
+          {% endcomment %}
+          <!-- Replace the entire form section with this code -->
+<form method="post" class="needs-validation" novalidate>
+  {% csrf_token %}
+  
+  <div class="row">
+    <!-- Age -->
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label for="Age" class="form-label">Age (years)</label>
+        <input type="number" id="Age" name="Age" class="form-control" placeholder="e.g., 45" min="0" max="120" required>
+        <div class="invalid-feedback">
+          Please provide a valid age (0-120 years).
+        </div>
+      </div>
+    </div>
+    
+    <!-- Gender -->
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label for="Gender" class="form-label">Gender</label>
+        <select id="Gender" name="Gender" class="form-select" required>
+          <option value="">Select Gender</option>
+          <option value="1">Male</option>
+          <option value="0">Female</option>
+        </select>
+        <div class="invalid-feedback">
+          Please select a gender.
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <!-- Total Bilirubin (TB) -->
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label for="TB" class="form-label">Total Bilirubin (mg/dL)</label>
+        <input type="number" step="0.1" id="TB" name="TB" class="form-control" placeholder="e.g., 1.2" min="0" required>
+        <div class="invalid-feedback">
+          Please provide Total Bilirubin value.
+        </div>
+      </div>
+    </div>
+    
+    <!-- Direct Bilirubin (DB) -->
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label for="DB" class="form-label">Direct Bilirubin (mg/dL)</label>
+        <input type="number" step="0.1" id="DB" name="DB" class="form-control" placeholder="e.g., 0.5" min="0" required>
+        <div class="invalid-feedback">
+          Please provide Direct Bilirubin value.
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <!-- Alkaline Phosphotase (Alkphos) -->
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label for="Alkphos" class="form-label">Alkaline Phosphotase (IU/L)</label>
+        <input type="number" id="Alkphos" name="Alkphos" class="form-control" placeholder="e.g., 200" min="0" required>
+        <div class="invalid-feedback">
+          Please provide Alkaline Phosphotase value.
+        </div>
+      </div>
+    </div>
+    
+    <!-- Alamine Aminotransferase (Sgpt) -->
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label for="Sgpt" class="form-label">Alamine Aminotransferase (IU/L)</label>
+        <input type="number" id="Sgpt" name="Sgpt" class="form-control" placeholder="e.g., 30" min="0" required>
+        <div class="invalid-feedback">
+          Please provide Alamine Aminotransferase value.
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <!-- Aspartate Aminotransferase (Sgot) -->
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label for="Sgot" class="form-label">Aspartate Aminotransferase (IU/L)</label>
+        <input type="number" id="Sgot" name="Sgot" class="form-control" placeholder="e.g., 40" min="0" required>
+        <div class="invalid-feedback">
+          Please provide Aspartate Aminotransferase value.
+        </div>
+      </div>
+    </div>
+    
+    <!-- Albumin (ALB) -->
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label for="ALB" class="form-label">Albumin (g/dL)</label>
+        <input type="number" step="0.1" id="ALB" name="ALB" class="form-control" placeholder="e.g., 4.5" min="0" required>
+        <div class="invalid-feedback">
+          Please provide Albumin value.
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <!-- A/G Ratio -->
+    <div class="col-md-6 mb-3">
+      <div class="form-group">
+        <label for="AG_Ratio" class="form-label">Albumin and Globulin Ratio</label>
+        <input type="number" step="0.1" id="AG_Ratio" name="A/G Ratio" class="form-control" placeholder="e.g., 1.2" min="0" required>
+        <div class="invalid-feedback">
+          Please provide Albumin and Globulin Ratio.
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="text-center mt-4">
+    <button type="submit" class="btn btn-primary btn-lg px-5">
+      <i class="fas fa-calculator me-2"></i>Calculate Risk
+    </button>
+    <a href="{% url 'homepage' %}" class="btn btn-outline-secondary btn-lg ms-2">Cancel</a>
+  </div>
+</form>
+
+
           {% if result %}
           <div class="mt-5">
             <div class="card result-card {% if result.prediction == 1 %}risk-high{% else %}risk-low{% endif %}">
@@ -130,114 +258,3 @@
 })()
 </script>
 {% endblock %}
-{% comment %} 
-{% extends "base.html" %}
-{% block content %}
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-10">
-      <div class="card shadow-sm border-0">
-        <div class="card-header bg-primary text-white py-3">
-          <h3 class="mb-0"><i class="fas fa-calculator me-2"></i>Liver Disease Risk Assessment</h3>
-        </div>
-        <div class="card-body p-4">
-          <p class="text-muted mb-4">Please provide the following health information for analysis. All fields are required.</p>
-          
-          <form method="post" class="needs-validation" novalidate>
-            {% csrf_token %}
-            
-            <div class="row">
-              {% for f in feature_names %}
-              <div class="col-md-6">
-                <div class="input-group">
-                  <label for="{{ f }}">{{ f }}</label>
-                  <input type="text" id="{{ f }}" name="{{ f }}" class="form-control" placeholder="Enter {{ f }}" required>
-                  <div class="invalid-feedback">
-                    Please provide a value for {{ f }}.
-                  </div>
-                </div>
-              </div>
-              {% endfor %}
-            </div>
-            
-            <div class="text-center mt-4">
-              <button type="submit" class="btn btn-primary btn-lg px-5">
-                <i class="fas fa-calculator me-2"></i>Calculate Risk
-              </button>
-              <a href="{% url 'homepage' %}" class="btn btn-outline-secondary btn-lg ms-2">Cancel</a>
-            </div>
-          </form>
-          
-          {% if result %}
-          <div class="mt-5">
-            <div class="card result-card {% if 'Disease' in result %}risk-high{% else %}risk-low{% endif %}">
-              <div class="card-body p-4">
-                <h4 class="card-title"><i class="fas fa-clipboard-list me-2"></i>Prediction Results</h4>
-                <div class="row align-items-center">
-                  <div class="col-md-8">
-                    <h5 class="{% if 'Disease' in result %}text-danger{% else %}text-success{% endif %}">
-                      {{ result }}
-                    </h5>
-                    <p class="text-muted mt-3">
-                      {% if 'Disease' in result %}
-                      Our analysis indicates potential liver health concerns. Please consult with a healthcare professional for a comprehensive evaluation.
-                      {% else %}
-                      Our analysis suggests low risk for liver disease. Maintain your healthy lifestyle with regular check-ups.
-                      {% endif %}
-                    </p>
-                  </div>
-                  <div class="col-md-4 text-center">
-                    <div class="display-4 {% if 'Disease' in result %}text-danger{% else %}text-success{% endif %}">
-                      <i class="fas {% if 'Disease' in result %}fa-exclamation-triangle{% else %}fa-check-circle{% endif %}"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="mt-4">
-              <div class="d-grid gap-2">
-                <a href="{% url 'predict_page' %}" class="btn btn-outline-primary">
-                  <i class="fas fa-redo me-2"></i>Perform Another Assessment
-                </a>
-              </div>
-            </div>
-          </div>
-          {% endif %}
-        </div>
-      </div>
-      
-      <!-- Information Section -->
-      <div class="card mt-4 border-0 shadow-sm">
-        <div class="card-body p-4">
-          <h5><i class="fas fa-info-circle me-2 text-primary"></i>About Our Prediction Model</h5>
-          <p class="text-muted">
-            Our machine learning model has been trained on the Indian Liver Patient Dataset from the UCI Machine Learning Repository.
-            It analyzes key health parameters to assess liver disease risk with high accuracy. Note that this tool is for informational
-            purposes only and should not replace professional medical advice.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-// Form validation
-(function () {
-  'use strict'
-  var forms = document.querySelectorAll('.needs-validation')
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        form.classList.add('was-validated')
-      }, false)
-    })
-})()
-</script>
-{% endblock %}
- {% endcomment %}
