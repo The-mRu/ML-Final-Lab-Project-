@@ -89,7 +89,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Step 4: checking Model Files
+### Step 4: Check Model Files
 
 Place your trained model files in the `predictor/models/` directory:
 - `best_model.pkl` - Trained machine learning model
