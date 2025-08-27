@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Liver Disease Prediction</title>
+</head>
+<body>
+  <h1>Liver Disease Prediction</h1>
+  <form method="post">
+    {% csrf_token %}
+    {% for f in feature_names %}
+      <div>
+        <label>{{ f }}</label>
+        <input type="text" name="{{ f }}" required>
+      </div>
+    {% endfor %}
+    <button type="submit">Predict</button>
+  </form>
+
+  {% if result %}
+    <h2>Result:</h2>
+    <p>Prediction: {{ result.prediction }} (1 = Disease, 0 = No Disease)</p>
+    {% if result.probability %}
+      <p>Probability: {{ result.probability|floatformat:2 }}</p>
+    {% endif %}
+  {% endif %}
+</body>
+</html>
+
