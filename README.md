@@ -89,26 +89,26 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Step 4: Set Up Model Files
+### Step 4: checking Model Files
 
 Place your trained model files in the `predictor/models/` directory:
 - `best_model.pkl` - Trained machine learning model
 - `scaler.pkl` - Fitted StandardScaler
 - `feature_names.json` - List of feature names in correct order
 
-### Step 5: Configure Database
+<!-- ### Step 5: Configure Database
 
 ```bash
 python manage.py migrate
-```
+``` -->
 
-### Step 6: Create Superuser (Optional)
+<!-- ### Step 6: Create Superuser (Optional)
 
 ```bash
 python manage.py createsuperuser
-```
+``` -->
 
-### Step 7: Run Development Server
+### Step 5: Run Development Server
 
 ```bash
 python manage.py runserver
@@ -153,7 +153,7 @@ liver-disease-predictor/
    - ✅ Green checkmark = No liver disease detected
    - ⚠️ Red warning triangle = Liver disease detected
 
-## 🔧 Configuration
+<!-- ## 🔧 Configuration
 
 ### Environment Variables
 
@@ -162,7 +162,7 @@ Create a `.env` file for local development:
 ```env
 SECRET_KEY=your-secret-key-here
 DEBUG=True
-```
+``` -->
 
 ### Model Training (Optional)
 
