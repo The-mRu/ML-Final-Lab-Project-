@@ -145,7 +145,9 @@ liver-disease-predictor/
 ```
 
 ## 🎯 How to Use
+Go to 
 
+> [Liver Health AI  (https://liver-disease-prediction-95i8.onrender.com/)](https://liver-disease-prediction-95i8.onrender.com/)
 1. **Access the Application**: Open your browser and go to the application URL
 2. **Navigate to Prediction Page**: Click on "Predict" in the navigation menu
 3. **Enter Patient Data**: Fill in all required health parameters
