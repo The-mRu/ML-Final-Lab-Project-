@@ -6,6 +6,11 @@ A machine learning-based web application for predicting liver disease risk using
 
 This web application uses a trained machine learning model to predict the likelihood of liver disease based on various health parameters such as bilirubin levels, enzymes, and proteins. The model was trained on the Indian Liver Patient Dataset from the UCI Machine Learning Repository.
 
+## 🌐 Live Link
+
+🔗[Liver Disease Prediction App](https://liver-disease-prediction-95i8.onrender.com/)
+
+
 ## 🚀 Features
 
 - **User-friendly Web Interface**: Clean, professional medical form for inputting patient data
